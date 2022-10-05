@@ -13,26 +13,29 @@ import Alert from './components/layout/Alert';
 
 function App() {
   return (
-    <GithubProvider>
-      <AlertProvider>
-        <Router>
-          <div className='flex flex-col justify-between h-screen'>
-            <Navbar />
-            <main className='container mx-auto px-3 pb-12'>
-              <Alert />
-              <Routes>
-                <Route exact path='/' element={<Home />} />
-                <Route exact path='/about' element={<About />} />
-                <Route exact path='/user/:login' element={<User />} />
-                <Route exact path='/notfound' element={<NotFound />} />
-                <Route exact path='/*' element={<NotFound />} />
-              </Routes>
-            </main>
-            <Footer />
-          </div>
-        </Router>
-      </AlertProvider>
-    </GithubProvider>
+    <>
+      {/* <h1> MY APP</h1> */}
+      <GithubProvider>
+        <AlertProvider>
+          <Router>
+            <div className='flex flex-col justify-between h-screen'>
+              <Navbar />
+              <main className='container mx-auto px-3 pb-12'>
+                <Alert />
+                <Routes>
+                  <Route exact path='/' element={<Home />} />
+                  <Route exact path='/about' element={<About />} />
+                  <Route exact path='/user/:login' element={<User />} />
+                  <Route exact path='/notfound' element={<NotFound />} />
+                  <Route exact path='/*' element={<NotFound />} />
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </Router>
+        </AlertProvider>
+      </GithubProvider>
+    </>
   );
 }
 

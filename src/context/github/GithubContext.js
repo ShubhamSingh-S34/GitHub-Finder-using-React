@@ -1,17 +1,14 @@
 import { createContext, useReducer } from "react";
 import githubReducer from "./GithubReducer";
-
+// const { Octokit } = require("@octokit/core");
 const GithubContext = createContext();
 
 
 const REACT_APP_GITHUB_URL = "https://api.github.com";
-const REACT_APP_GITHUB_TOKEN = "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"
+const REACT_APP_GITHUB_TOKEN = "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"
 
 
 export const GithubProvider = ({ children }) => {
-
-
-
     const initialState = {
         users: [],
         user: {},
@@ -32,12 +29,12 @@ export const GithubProvider = ({ children }) => {
         })
         const response = await fetch(`${REACT_APP_GITHUB_URL}/search/users?${params}`, {
             headers: {
-                Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
+                // Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
             }
         })
 
         const { items } = await response.json();
-        console.log(items);
+        console.log(items, "This is in userSearch function");
         dispatch({
             type: "GET_USERS",
             payload: items,
@@ -49,7 +46,11 @@ export const GithubProvider = ({ children }) => {
     // FETCH SINGLE USER FROM GITHUB API(TESTING PURPOSES)
     const getUser = async (login) => {
         setLoading();
+        // const octokit = new Octokit({ auth: `token ${REACT_APP_GITHUB_TOKEN}` });
 
+        // const response = await octokit.request(`GET /users/${login}`, {
+        //     username: `${login}`
+        // })
         const response = await fetch(`${REACT_APP_GITHUB_URL}/users/${login}`, {
             headers: {
                 Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
@@ -58,7 +59,11 @@ export const GithubProvider = ({ children }) => {
 
         if (response.status === 404) {
             window.location = '/notfound'
-        } else {
+        } else if (response.status === 401) {
+            console.log('error!!!');
+            console.log(response);
+        }
+        else {
             const data = await response.json();
             console.log(data);
             dispatch({

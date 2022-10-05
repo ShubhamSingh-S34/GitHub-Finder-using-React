@@ -6,12 +6,8 @@ import GithubContext from '../../context/github/GithubContext';
 
 function UserResults() {
 
-    const REACT_APP_GITHUB_URL = "https://api.github.com";
-    const REACT_APP_GITHUB_TOKEN = "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"
 
     const { users, loading } = useContext(GithubContext)
-
-
 
     if (!loading) {
         return (
