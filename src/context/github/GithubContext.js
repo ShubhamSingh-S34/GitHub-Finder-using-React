@@ -53,7 +53,7 @@ export const GithubProvider = ({ children }) => {
         // })
         const response = await fetch(`${REACT_APP_GITHUB_URL}/users/${login}`, {
             headers: {
-                Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
+                // Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
             }
         })
 
