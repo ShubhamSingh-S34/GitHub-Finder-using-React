@@ -5,7 +5,7 @@ const GithubContext = createContext();
 
 
 const REACT_APP_GITHUB_URL = "https://api.github.com";
-const REACT_APP_GITHUB_TOKEN = "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"
+const REACT_APP_GITHUB_TOKEN = "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"
 
 
 export const GithubProvider = ({ children }) => {
@@ -53,7 +53,7 @@ export const GithubProvider = ({ children }) => {
         // })
         const response = await fetch(`${REACT_APP_GITHUB_URL}/users/${login}`, {
             headers: {
-                // Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
+                Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
             }
         })
 
