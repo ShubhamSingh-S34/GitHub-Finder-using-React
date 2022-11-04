@@ -3,9 +3,9 @@ import githubReducer from "./GithubReducer";
 // const { Octokit } = require("@octokit/core");
 const GithubContext = createContext();
 
-
+// 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
 const REACT_APP_GITHUB_URL = "https://api.github.com";
-const REACT_APP_GITHUB_TOKEN = "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"
+const REACT_APP_GITHUB_TOKEN = "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"
 
 
 export const GithubProvider = ({ children }) => {
@@ -51,11 +51,13 @@ export const GithubProvider = ({ children }) => {
         // const response = await octokit.request(`GET /users/${login}`, {
         //     username: `${login}`
         // })
+        console.log("This is getUser Function ")
         const response = await fetch(`${REACT_APP_GITHUB_URL}/users/${login}`, {
             headers: {
                 Authorization: `token ${REACT_APP_GITHUB_TOKEN}`
             }
         })
+
 
         if (response.status === 404) {
             window.location = '/notfound'
